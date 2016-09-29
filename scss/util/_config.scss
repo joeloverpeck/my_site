@@ -1,0 +1,117 @@
+//--------------------------------------------
+// CONFIG
+//=========
+// Global Variables
+//--------------------------------------------
+
+	// RULE  FLAGS
+	// ----------------------------------------
+
+
+	// FONT-VARIANTS
+	// ----------------------------------------
+	$bold: 					"bold";
+	$reg: 					"regular";
+	$italic: 				"italic";
+	$bolditalic: 			"bold-italic";
+	$extrabold: 			"extra-bold";
+	$condbold: 				"cond-bold";
+	$conditalic: 			"cond-italic";
+	$cond: 					"cond";
+
+//------------------------------
+// BASELINE DEFAULTS
+// - Variables for base settings
+//==============================
+
+	// BASE UNIT SETTINGS
+	// ----------------------------------------
+	// 	-Establishes Baseline for (r)em units
+	// 	-Used for rescaling entire app.
+	// ----------------------------------------
+	$base-num: 				16;
+	$base-size: 			$base-num + px;
+
+	// BASE LINE HEIGHT
+	// ----------------------------------------
+	$base-line-height: 		24px;
+
+	// PAGE WIDTH
+	// ----------------------------------------
+	$page-width: 			960px; // Use px for width contraints
+
+	// BACKGROUND COLORS
+	// ----------------------------------------
+	$body-color: 				#fff;
+
+	// COLORS
+	// ----------------------------------------
+	$blue: 			#9CAFB7;
+	$dark-blue:    #4281A4;
+
+		// TYPE COLORS
+		// ----------------------------------------
+		$type-color: 			#333;
+		$type-light: 			lighten($type-color, 25%);
+		$input-color: 			lighten($type-light, 14%);
+		$placeholder-color: 	lighten($type-light, 38%);
+		$label-color: 			lighten(#4b4a47, 19%);
+
+		// LINK COLORS
+		// ----------------------------------------
+		$link-color: 			blue;
+		$link-light: 			lighten( $link-color, 20% );
+		$link-hover: 			red;
+
+	// BORDER STYLES
+	// ----------------------------------------
+	$border: 				#dddddd;
+	$border-focus: 			lighten($border, 4%);
+	$border-radius: 		4px;
+
+	// SPACING UNITS
+	// ----------------------------------------
+	// Spacing all derived from base line-height.
+	$quad-spacing-unit: 	$base-line-height * 4!default;
+	$trip-spacing-unit: 	$base-line-height * 3!default;
+	$double-spacing-unit: 	$base-line-height * 2!default;
+	$base-spacing-unit: 	$base-line-height!default;
+	$half-spacing-unit: 	$base-spacing-unit / 2!default;
+	$quarter-spacing-unit: 	$base-spacing-unit / 4!default;
+	$eigth-spacing-unit: 	$base-spacing-unit / 8!default;
+	$line-height-ratio: 	$base-line-height / $base-size;
+
+// ------------------------------
+// COMPONENT DEFAULTS
+// - Component-Specific Variables
+// ==============================
+
+	// FORM ELEMENTS
+	// ----------------------------------------
+	$placeholder-color: 	#bbb;
+
+	// BREAD CRUMBS
+	// ----------------------------------------
+	$crumb-bg: 				lighten($type-light, 52%);
+
+	// BUTTONS
+	// ----------------------------------------
+	$cta: 					#EC623F;
+
+	// MESSAGE COLORS
+	// ----------------------------------------
+	$message-warning: 		#ff9065;//	$theme-color;
+
+	// SELECTION SETTINGS
+	// ----------------------------------------
+	$sel-color: 			$type-color;
+	$sel-background: 		$link-light;
+	$sel-shadow: 			none;
+
+	// MESSAGE COLORS
+	// ----------------------------------------
+	$error-color: 			#FF7764;
+
+// -------
+// ICONS
+// =======

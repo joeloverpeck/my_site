@@ -1,0 +1,38 @@
+$orange: #F4A261;
+$blue: #264653;
+$aqua: #2A9D8F;
+$yellow: #E9C46A;
+$rust: #E76F51;
+
+.name {
+    padding: 20px;
+    height: 100%;
+    width: 33.33%;
+
+
+}
+
+body {
+    //background: #fbf3ed;
+    height: 100%;
+
+
+    font-family: 'Oxygen', 'helvetica', 'sans-serif';
+}
+
+.info {
+    padding: 20px;
+    //color: darken($blue, 19%);
+    //color: $blue;
+}
+
+h2 {
+    //text-transform: uppercase;
+    //font-family: 'Lora', 'georgia', 'serif';
+    //color: $blue;
+    font-size: 2.8em;
+    letter-spacing: -.04em;
+    //color: darken($primary, 45%);
+
+
+}
