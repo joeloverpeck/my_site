@@ -218,19 +218,25 @@ table {
     opacity: 1;
   }
 }
-.name {
-  padding: 20px;
+.panel {
+  display: inline-block;
+  padding: 22px;
+  background: #f3f3f3;
+  vertical-align: baseline;
+}
+
+.info-panel {
+  width: 25%;
   height: 100%;
+}
+
+.name {
   width: 33.33%;
 }
 
 body {
   height: 100%;
   font-family: 'Oxygen', 'helvetica', 'sans-serif';
-}
-
-.info {
-  padding: 20px;
 }
 
 h2 {
