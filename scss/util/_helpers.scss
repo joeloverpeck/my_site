@@ -1,7 +1,7 @@
 //-------------------------------------------------------
 // HELPERS
 //-------------------------------------------------------
-// Helper Classes and Mixins. 
+// Helper Classes and Mixins.
 //=======================================================
 
 
@@ -69,7 +69,7 @@
     @mixin slab($font-style) {
       @if $font-style == "regular" {
         font-family: "Rokkitt R", Rockwell;
-      } 
+      }
     }
 
     // Using root ems (rems) units only for font sizing.
@@ -92,7 +92,146 @@
     @mixin letterpress($opacity){
         text-shadow:white($opacity) 2px 2px 0;
     }
-    
+
+    @mixin radial-gradient($from, $to) {
+    	background: -moz-radial-gradient(center, circle cover, $from 0%, $to 100%);
+    	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $from), color-stop(100%, $to));
+    	background: -webkit-radial-gradient(center, circle cover, $from 0%, $to 100%);
+    	background: -o-radial-gradient(center, circle cover, $from 0%, $to 100%);
+    	background: -ms-radial-gradient(center, circle cover, $from 0%, $to 100%);
+    	background: radial-gradient(center, circle cover, $from 0%, $to 100%);
+    	background-color: $from;
+  }
+
+  @mixin cut-corners($size, $bg-color) {
+      padding:           0;
+      display:           block;
+      background-size:   cover;
+      background-clip:   content-box;
+      background-color:  $bg-color;
+      position:          relative;
+
+
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        border: $size solid transparent;
+        border-bottom: $size solid $bg-color;
+        bottom: -$size;
+        right: -$size;
+        transform: rotate(135deg);
+      }
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        border: $size solid transparent;
+        border-top: $size solid $bg-color;
+        top: -$size;
+        left: -$size;
+        transform: rotate(135deg);
+      }
+  }
+
+  @mixin text-underline-crop($background) {
+    text-shadow:  .03em 0 $background,
+                  -.03em 0 $background,
+                  0 .03em $background,
+                  0 -.03em $background,
+                  .06em 0 $background,
+                  -.06em 0 $background,
+                  .09em 0 $background,
+                  -.09em 0 $background,
+                  .12em 0 $background,
+                  -.12em 0 $background,
+                  .15em 0 $background,
+                  -.15em 0 $background;
+  }
+
+  @mixin text-underline($color-bg, $color-text) {
+    background-image: linear-gradient($color-text, $color-text);
+    background-size: 1px 2px;
+    background-repeat: repeat-x;
+    background-position: 0% 92%;
+  }
+
+  @mixin text-selection($selection) {
+    &::selection {
+      @include text-underline-crop($selection);
+
+      background: $selection;
+    }
+
+    &::-moz-selection {
+      @include text-underline-crop($selection);
+
+      background: $selection;
+    }
+  }
+
+  @mixin link-underline($background, $text, $selection){
+    @include text-underline-crop($background);
+    @include text-underline($background, $text);
+    @include text-selection($selection);
+
+    color: $text;
+    text-decoration: none;
+
+    *,
+    *:after,
+    &:after,
+    *:before,
+    &:before {
+      text-shadow: none;
+    }
+
+    &:visited {
+      color: $text;
+    }
+  }
+
+
+
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// /// Triangle helper mixin
+// /// @param {Direction} $direction - Triangle direction, either `top`, `right`, `bottom` or `left`
+// /// @param {Color} $color [currentcolor] - Triangle color
+// /// @param {Length} $size [1em] - Triangle size
+// @mixin triangle($direction, $color: currentcolor, $size: 1em) {
+//   @if not index(top right bottom left, $direction) {
+//     @error "Direction must be either `top`, `right`, `bottom` or `left`.";
+//   }
+//
+//   width: 0;
+//   height: 0;
+//   content: '';
+//   z-index: 2;
+//   border-#{opposite-position($direction)}: ($size * 1.5) solid $color;
+//
+//   $perpendicular-borders: $size solid transparent;
+//
+//   @if $direction == top or $direction == bottom {
+//     border-left:   $perpendicular-borders;
+//     border-right:  $perpendicular-borders;
+//   } @else if $direction == right or $direction == left {
+//     border-bottom: $perpendicular-borders;
+//     border-top:    $perpendicular-borders;
+//   }
+// }
+
+
+
 //-------------------------------------------------------
 // HELPERS
 //-------------------------------------------------------
@@ -114,6 +253,13 @@
 
     }
 
+    %double-border {
+      display: inline-block;
+      padding: 2px 0;
+      border-bottom: 1px solid #444;
+      border-top: 4px solid #444;
+    }
+
     // Hide for both screenreaders and browsers:
     // css-discuss.incutio.com/wiki/Screenreader_Visibility
 
@@ -125,7 +271,7 @@
     // Hide visually only but have it available for screenreaders by Jon Neal
     // webaim.org/techniques/css/invisiblecontent also j.mp/visuallyhidden
 
-    // 
+    //
 
     %visuallyhidden {
       border: 0;
@@ -149,9 +295,9 @@
     }
 
     %ib {
-      display: inline-block;      
+      display: inline-block;
       zoom: 1;
-      *display: inline;  
+      *display: inline;
     }
 
 
@@ -171,7 +317,7 @@
         opacity: 0;
         -webkit-transform: translateX(-35px);
       }
-      
+
       100% {
         opacity: 1;
         -webkit-transform: translateX(0);
@@ -183,7 +329,7 @@
         opacity: 0;
         -moz-transform: translateX(-35px);
       }
-      
+
       100% {
         opacity: 1;
         -moz-transform: translateX(0);
@@ -195,7 +341,7 @@
         opacity: 0;
         -o-transform: translateX(-35px);
       }
-      
+
       100% {
         opacity: 1;
         -o-transform: translateX(0);
@@ -207,7 +353,7 @@
         opacity: 0;
         transform: translateX(-35px);
       }
-      
+
       100% {
         opacity: 1;
         transform: translateX(0);
@@ -223,22 +369,22 @@
 
 
     @-webkit-keyframes fadeIn {
-  0% {opacity: 0;}  
+  0% {opacity: 0;}
   100% {opacity: 1;}
 }
 
 @-moz-keyframes fadeIn {
-  0% {opacity: 0;}  
+  0% {opacity: 0;}
   100% {opacity: 1;}
 }
 
 @-o-keyframes fadeIn {
-  0% {opacity: 0;}  
+  0% {opacity: 0;}
   100% {opacity: 1;}
 }
 
 @keyframes fadeIn {
-  0% {opacity: 0;}  
+  0% {opacity: 0;}
   100% {opacity: 1;}
 }
 

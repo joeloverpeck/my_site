@@ -24,12 +24,7 @@ html {
 
 body {
 	height: 100%;
-	font-size: 14px;
 	color: #444;
-	//font-family: 'Lora', 'Georgia', 'serif';
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	margin: 0;
 	overflow-x: hidden;
 }
@@ -40,10 +35,12 @@ body {
 }
 
 ::selection {
- // background: #F9CC8D;
-  //color: black;//darken(\\$heading-text, 14%);
+ background: $tile-color;
+ color: white;
+
+  //color: white;
 }
 ::-moz-selection {
- // background: #F9CC8D;
-  //color: black;//darken(\\$heading-text, 14%);
+	//background: lighten(#f37454, 18%);
+  //color: white;
 }

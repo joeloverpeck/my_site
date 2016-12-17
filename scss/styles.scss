@@ -24,6 +24,7 @@
 //  Project Settings:
 	@import "util/config";
 	@import "base/scaffolding";
+	@import "base/typography";
 
 //========================
 
@@ -32,6 +33,8 @@
 	//@import "compass/css3"; 			// compass css3 mixins
 	@import "util/normalize";				// style normalization
 	@import "util/helpers";					// helper rules
+
+	@import "modules/tile";
 	//@import "util/font-face";				// font-face settings
 	//@import "util/icons";
 

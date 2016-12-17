@@ -1,8 +1,8 @@
 // Load plugins
 var gulp = require('gulp'),
+    usemin = require('gulp-usemin'),
     sass = require('gulp-ruby-sass'), // don't forget to install ruby
-    autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
+    autoprefixer = require('gulp-autoprefixer'),    
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
@@ -25,8 +25,6 @@ var config = {
 
 }
 
-
-
 // Static Server + watching scss/html files
 gulp.task('serve', ['styles'], function() {
 
@@ -38,7 +36,21 @@ gulp.task('serve', ['styles'], function() {
     // })
 
     gulp.watch("scss/**/*.scss", ['styles']);
-    gulp.watch("scss/*.html").on('change', reload);
+    gulp.watch("js/**/*.js", ['usemin'])
+    gulp.watch("*.html").on('change', reload);
+
+});
+
+// Index
+gulp.task('usemin', function () {
+  return gulp.src('index.html')
+      .pipe(usemin({
+
+
+        js: [uglify()]
+
+      }))
+      .pipe(gulp.dest('js/'))
 
 });
 
